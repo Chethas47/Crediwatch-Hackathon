@@ -5,5 +5,7 @@
 2. Displaying party_name, financial score, public score, private score and total score in a table using material-ui
 3. Paginating the table to show 10 data items per page.
 
-## Working on - Expanding view, Color coding the numbers and adding filters for search functionality
+## Second commit - Added color coding with pagination
+
+## Working on - Expanding view, and adding filters for search functionality
 ### Will commit the final progress by 4pm today.
