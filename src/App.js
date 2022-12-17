@@ -16,21 +16,21 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover
+    backgroundColor: theme.palette.action.hover,
   },
   // hide last border
   "&:last-child td, &:last-child th": {
-    border: 0
-  }
+    border: 0,
+  },
 }));
 
 const url = "https://cdn.crediwatch.com/assets/json/ews_score.json";
@@ -61,6 +61,18 @@ export default function App() {
       console.log(err.message);
     });
 
+  function getBg(score) {
+    if (score > 0 && score <= 5) {
+      return "green";
+    }
+    if (score > 5 && score < 13.5) {
+      return "yellow";
+    }
+    if (score >= 13.5 && score <= 15) {
+      return "red";
+    }
+  }
+
   // function searchPartyName(queryPartyName){
   //   var resPartyName = finData.find(queryPartyName);
   //   console.log(resPartyName);
@@ -86,7 +98,7 @@ export default function App() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <StyledTableRow key={row.name}>
+                  <TableRow key={row.name}>
                     <TableCell>
                       <IconButton
                         aria-label="expand row"
@@ -100,16 +112,28 @@ export default function App() {
                         )}
                       </IconButton>
                     </TableCell>
-                    <StyledTableCell>{row.party_name}</StyledTableCell>
-                    <StyledTableCell>
+                    <TableCell>{row.party_name}</TableCell>
+                    <TableCell
+                      style={{
+                        backgroundColor: getBg(row.financial_risks.score),
+                      }}
+                    >
                       {row.financial_risks.score}
-                    </StyledTableCell>
-                    <StyledTableCell>{row.score}</StyledTableCell>
-                    <StyledTableCell>
+                    </TableCell>
+                    <TableCell style={{ backgroundColor: getBg(row.score) }}>
+                      {row.score}
+                    </TableCell>
+                    <TableCell
+                      style={{
+                        backgroundColor: getBg(row.private_data_risks.score),
+                      }}
+                    >
                       {row.private_data_risks.score}
-                    </StyledTableCell>
-                    <StyledTableCell>{row.total}</StyledTableCell>
-                  </StyledTableRow>
+                    </TableCell>
+                    <TableCell style={{ backgroundColor: getBg(row.total) }}>
+                      {row.total}
+                    </TableCell>
+                  </TableRow>
                 );
               })}
             {emptyRows > 0 && (

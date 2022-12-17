@@ -41,6 +41,18 @@ export default function App() {
       console.log(err.message);
     });
 
+  function getFinBg(score) {
+    if (score > 0 && score <= 5) {
+      return "green";
+    }
+    if (score > 5 && score <= 10) {
+      return "amber";
+    }
+    if (score > 10 && score <= 15) {
+      return "red";
+    }
+  }
+
   // function searchPartyName(queryPartyName){
   //   var resPartyName = finData.find(queryPartyName);
   //   console.log(resPartyName);
