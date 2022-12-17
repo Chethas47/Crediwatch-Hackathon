@@ -1,6 +1,7 @@
 import "./styles.css";
 import { useState } from "react";
 import { styled } from "@mui/material/styles";
+import AppBar from "@mui/material/AppBar";
 import TablePagination from "@mui/material/TablePagination";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
@@ -12,6 +13,7 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Typography } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -63,13 +65,13 @@ export default function App() {
 
   function getBg(score) {
     if (score > 0 && score <= 5) {
-      return "green";
+      return "#99ff66";
     }
     if (score > 5 && score < 13.5) {
-      return "yellow";
+      return "#ff9933";
     }
     if (score >= 13.5 && score <= 15) {
-      return "red";
+      return "#ff5c33";
     }
   }
 
@@ -83,6 +85,20 @@ export default function App() {
 
   return (
     <div className="App">
+      <AppBar style={{ background: "#cccccc" }}>
+        <Typography>
+          <span style={{ color: "black" }}>Color Scheme =></span>
+          <span style={{ backgroundColor: "#ff5c33", color: "black" }}>
+            High|
+          </span>
+          <span style={{ backgroundColor: "#ff9933", color: "black" }}>
+            Medium|
+          </span>
+          <span style={{ backgroundColor: "#99ff66", color: "black" }}>
+            Low|
+          </span>{" "}
+        </Typography>
+      </AppBar>
       <TableContainer component={Paper}>
         <Table aria-label="customized table">
           <TableHead>
