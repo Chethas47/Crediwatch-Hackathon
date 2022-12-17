@@ -1,4 +1,4 @@
-# Crediwatch-Hackathon
+# Crediwatch-Hackathon - Preview screenshot below
 
 ## Initial commit progress 
 1. Fetching data from the backend(json in this case), destructuring data fetched and using React hooks(useState) to store and set state.
